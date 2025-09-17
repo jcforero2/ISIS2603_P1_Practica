@@ -1,12 +1,22 @@
 package co.edu.uniandes.dse.parcial1.entities;
 
 import jakarta.persistence.Entity;
-import lombok.Data;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
+import java.util.ArrayList;
+import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Entity
 public class EstadioEntity extends BaseEntity {
+    private String ciudad;
+    private int aforoMax;
+    private double precioAlquiler;
 
-    private String nombre;
-    private Long precioAlquiler;
+    @OneToMany(mappedBy = "estadio")
+    private List<ConciertoEntity> conciertos = new ArrayList<>();
 }
+
